@@ -1,0 +1,1 @@
+sbcl --userinit init --eval "(setf asdf:*compile-file-failure-behaviour* :warn)" --eval "(asdf:load-system :cl-mpm-builder/tools)" --eval "(clog-tools:clog-builder :port 0 :app t)"

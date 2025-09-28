@@ -1,0 +1,1 @@
+sbcl --eval "(pushnew (uiop:getcwd) ql:*local-project-directories* :test #'equalp)" --eval "(ql:quickload :cl-mpm-builder/tools)" --eval "(clog-tools:clog-builder :project :cl-mpm-builder :port 0 :app t)"
