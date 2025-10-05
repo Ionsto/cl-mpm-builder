@@ -1,8 +1,11 @@
-# New CLOG project
-### _Your Name <your.name@example.com>_
+# CL-MPM builder
 
-This is a project to do ... something.
+GUI for interacting with cl-mpm, a material point method library written in common lisp.
+By using CLOG, a GUI library written in lisp, real-time deep introspection of user-made packages is enabled.
 
+
+
+# CLOG tutorial
 
 To use your installed QuickLisp
 
