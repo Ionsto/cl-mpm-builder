@@ -13,9 +13,16 @@
   :entry-point
   "cl-mpm-builder:start-app"
   :depends-on
-  (#:clog "clog-plotly" "clog-ace")
+  (#:cl-mpm/example
+   #:clog "clog-plotly" "clog-ace")
   :components
-  ((:file "cl-mpm-builder")))
+  ((:file "package")
+   (:file "cl-mpm-representation")
+   (:file "konva-link")
+   (:file "property-view")
+   (:file "render-manager")
+   (:file
+    "cl-mpm-builder")))
 (asdf/parse-defsystem:defsystem #:cl-mpm-builder/tools
   :defsystem-depends-on
   (:clog)
