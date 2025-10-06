@@ -17,9 +17,11 @@
 (defclass simulation (sim-rep)
   ((sim-size
     :initform (list 10d0 10d0)
+    :type list
     :accessor sim-size)
    (mesh-resolution
     :initform 0.25d0
+    :type number
     :accessor sim-mesh-resolution)
    (sim-type
     :initform :EXPLICIT
@@ -27,27 +29,33 @@
    (sim-bcs
     :initform (list :left (list 0 nil)
                     :bottom (list nil 0))
+    :type list
     :accessor sim-bcs)
    (sim-args-list
     :initform '(:enable-split t
                 :split-factor 0.5d0
                 :enable-aggregate t
                 :enable-fbar t)
+    :type list
     :accessor sim-args-list)
    ))
 
 (defclass simulation-dynamic (simulation)
   ((dt-steps
     :initform 0.1d0
+    :type number
     :accessor sim-dt-steps)
    (total-time
     :initform 10d0
+    :type number
     :accessor sim-dt-total)
    (damping-factor
     :initform 1d-3
+    :type number
     :accessor sim-damping-factor)
    (dt-scale
     :initform 0.9d0
+    :type number
     :accessor sim-dt-scale)))
 
 (defclass simulation-quasi-static (simulation)

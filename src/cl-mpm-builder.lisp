@@ -374,7 +374,8 @@ this.fill(normal_colour);
              (run-sim (create-button row :content "Run sim"            :class button-class :style "height: 100%"))
              (end-sim (create-button row :content "End sim"            :class button-class :style "height: 100%"))
              (clear-sim (create-button row :content "Clear render" :class button-class :style "height: 100%"))
-             (sim-anim (create-button row :content "Play animation" :class button-class :style "height: 100%:margin-left:auto"))
+             (sim-anim-play (create-button row :content "▶" :class button-class :style "height: 100%:margin-left:auto"))
+             (sim-anim-pause (create-button row :content "⏸" :class button-class :style "height: 100%:margin-left:auto"))
              (sim-timeline
                (clog:create-form-element
                 row
@@ -391,7 +392,7 @@ this.fill(normal_colour);
         (make-simulation)
         (set-on-event sim-timeline "change" (lambda (obj)
                                               (update-render (parse-integer (text-value *sim-timeline*)))))
-        (set-on-click sim-anim
+        (set-on-click sim-anim-play
                       (lambda (obj)
                         (js-query *canvas*
                                     (format nil "
@@ -413,6 +414,14 @@ if (slider.value == slider.max){
 }
 }, 100);
 " (html-id sim-timeline)))))
+        (set-on-click sim-anim-pause
+                      (lambda (obj)
+                        (js-query *canvas*
+                                  (format nil "
+let slider = clog['~A'];
+if (typeof inter !== 'undefined') {
+    clearInterval(inter);
+}" (html-id sim-timeline)))))
 
         (set-on-click create-sim (lambda (obj)
                                    (setf *rect-list* nil)

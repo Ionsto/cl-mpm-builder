@@ -16,13 +16,14 @@
   (#:cl-mpm/example
    #:clog "clog-plotly" "clog-ace")
   :components
-  ((:file "package")
-   (:file "cl-mpm-representation")
-   (:file "konva-link")
-   (:file "property-view")
-   (:file "render-manager")
-   (:file
-    "cl-mpm-builder")))
+  ((:module "src"
+    :serial t
+    :components ((:file "package")
+                 (:file "cl-mpm-representation")
+                 (:file "konva-link")
+                 (:file "property-view")
+                 (:file "render-manager")
+                 (:file "cl-mpm-builder")))))
 (asdf/parse-defsystem:defsystem #:cl-mpm-builder/tools
   :defsystem-depends-on
   (:clog)
