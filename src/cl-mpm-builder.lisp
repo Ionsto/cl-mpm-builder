@@ -67,7 +67,13 @@ overflow-y: auto;padding:0"
     (setf (cl-mpm::sim-run-sim *sim*) nil))
   (let* ((st (sim-type *meta-sim*))
          (type (cond
-                 ((eq st :EXPLICIT) 'cl-mpm/aggregate::mpm-sim-agg-usf)
+                 ((eq st :EXPLICIT)
+                  'cl-mpm/aggregate::mpm-sim-agg-usf
+                  ;; 'cl-mpm/dynamic-relaxation::mpm-sim-implict-dynamic
+                  )
+                 ;; ((eq st :IMPLICIT-DYNAMIC)
+                 ;;  'cl-mpm/dynamic-relaxation::mpm-sim-implict-dynamic
+                 ;;  )
                  ((eq st :IMPLICIT) 'cl-mpm/dynamic-relaxation::mpm-sim-dr-ul)
                  (t nil))))
     (if (not type)
@@ -139,7 +145,7 @@ overflow-y: auto;padding:0"
                                                       x substeps (cl-mpm::sim-time sim)))
                                         (dotimes (i substeps)
                                           (cl-mpm:update-sim sim)))
-                                      (setf (cl-mpm:sim-dt sim) (* dt-scale (cl-mpm::calculate-min-dt sim)))
+                                      ;; (setf (cl-mpm:sim-dt sim) (* dt-scale (cl-mpm::calculate-min-dt sim)))
                                       (render-mps sim))
                                   (error (c)
                                     (princ c)))
@@ -460,7 +466,7 @@ if (typeof inter !== 'undefined') {
         ))))
 
 (defun start-app ()
-  (setf lparallel:*kernel* (lparallel::make-kernel 16))
+  (setf lparallel:*kernel* (lparallel::make-kernel 8))
   (initialize 'on-new-window
    :static-root (merge-pathnames "./www/"
                   (asdf:system-source-directory :cl-mpm-builder)))
