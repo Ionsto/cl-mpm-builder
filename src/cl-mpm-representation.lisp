@@ -70,6 +70,9 @@
   ((name
     :initform "mps"
     :accessor mp-block-name)
+   (mp-type
+    :initform 'cl-mpm/particle::particle-elastic
+    :accessor mp-block-type)
    (position
     :initform (list 0d0 0d0)
      :accessor mp-block-position)
