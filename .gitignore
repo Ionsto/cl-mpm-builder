@@ -17,3 +17,6 @@
 *.wx32fsl
 *.bak
 vgplot-*
+output/*.vtk
+output/*.csv
+output/*.json
